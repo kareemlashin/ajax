@@ -1,0 +1,40 @@
+let data = {"key":"value"}
+
+$.ajax({
+    type: 'PUT',
+    url: 'http://example.com/api',
+    contentType: 'application/json',
+    data: JSON.stringify(data), // access in body
+}).done(function () {
+    console.log('SUCCESS');
+}).fail(function (msg) {
+    console.log('FAIL');
+}).always(function (msg) {
+    console.log('ALWAYS');
+});
+
+       var URL = "/Timesheet/Timesheet/UpdateEntry";
+
+        var dataObject = { 'newWeekEntry': newEntry, 'oldWeekEntry': oldEntry };
+
+        alert(JSON.stringify(dataObject));
+
+        $.ajax({
+            url: URL,
+            type: 'PUT',    
+            data: JSON.stringify(dataObject),
+            dataType: 'json',
+            success: function(result) {
+                alert("success?");
+            }
+        });
+        $.ajax({
+        url: window.serverUrl + 'student/event/' + eventId,
+        type: 'put',
+        data: JSON.stringify(data),
+        headers: {
+            'x-auth-token': localStorage.accessToken,
+            "Content-Type": "application/json"
+        },
+        dataType: 'json'
+})
