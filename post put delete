@@ -1,0 +1,68 @@
+<form method="POST" enctype="multipart/form-data">
+        <div>
+            <input type="file" name="image" id="image">
+        </div>
+        <button id="submit">submit</button>
+    </form>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('form').on('submit', function(e) {
+
+                e.preventDefault();
+                let data = $("#image").val()
+
+            $.ajax({
+                type: 'post',
+                data: {
+                    "_token": '{{ csrf_token() }}',
+                    'image': data,
+                },
+                enctype:"multipart/form-data",
+                url: "{{ route('imgdelete',1) }}",
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+
+
+            $.ajax({
+                type: 'put',
+                data: {
+                    "_token": '{{ csrf_token() }}',
+                    'image': data,
+                },
+                enctype:"multipart/form-data",
+                url: "{{ route('imgdelete',1) }}",
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+
+
+            $.ajax({
+                type: 'delete',
+                data: {
+                    "_token": '{{ csrf_token() }}',
+                },
+                enctype:"multipart/form-data",
+                url: "{{ route('imgdelete',1) }}",
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+
+
+
+            });
+
+        });
+
+    </script>
