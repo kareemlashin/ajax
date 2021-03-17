@@ -1,0 +1,24 @@
+$("#submit_btn").click(function(){
+    $('.error_status').html();
+        if($("form#frm_message_board").valid())
+        {
+            $.ajax({
+                type: "POST",
+                url: "<?php echo site_url('message_board/add');?>",
+                data: $('#frm_message_board').serialize(),
+                success: function(msg) {
+                    var msg = $.parseJSON(msg);
+                    if(msg.success=='yes')
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        alert('Server error');
+                        return false;
+                    }
+                }
+            });
+        }
+        return false;
+    });
