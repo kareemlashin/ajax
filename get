@@ -1,0 +1,22 @@
+ <html>
+ <script type="text/javascript" src="jQuery.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $("#submit").click(function(){
+        $.ajax({
+            type: 'GET',
+            url: "http://localhost/page1.html",
+            success:function(data){
+             alert(data);
+            }
+        });
+    return false;
+    });
+});
+</script>
+</head>
+
+<body>
+<input type="button" id="submit" value="submit" />
+</body>
+ </html>
